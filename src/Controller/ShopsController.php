@@ -2,11 +2,22 @@
 
 namespace App\Controller;
 
-use Cake\Controller\Controller;
+use App\Controller\AppController;
 
-class ShopsController extends Controller
+class ShopsController extends AppController
 {
-    public function index() {
+    public function initialize(): void
+    {
+        parent::initialize();
+    }
 
+    public function index() {
+        $modsLocator = $this->getTableLocator()->get('Mods');
+
+        $modsArray = $modsLocator->find()
+            ->limit(6)
+            ->toArray();
+
+        $this->set(compact("modsArray"));
     }
 }
