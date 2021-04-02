@@ -20,15 +20,21 @@
                     </thead>
                     <tbody>
                     <?php
-                        $cart = $this->Session->read("cart");
-                        if ($cart != NULL) {
-                            foreach ($cart as $k => $v) {
+
+                        if ($cartArray != NULL) {
+                            foreach ($cartArray as $k => $v) {
                                 echo "<tr>";
-                                    echo '<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>';
-                                    echo '<td>Product Name Dada</td>';
+                                    echo '<td><img src="'.$v["picture"].'" /> </td>';
+                                    echo '<td>'.$v["name"].'</td>';
                                     echo '<td>En stock</td>';
-                                    echo '<td class="text-right">124,90 €</td>';
-                                    echo '<td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>';
+                                    echo '<td class="text-right">'.$v["price"].'</td>';
+                                    echo '<td class="text-right">';
+                                    echo $this->Html->link(
+                                        '<i class="fa fa-trash"></i>',
+                                        ['controller' => 'Shops', 'action' => 'removeCart', $v["id"]],
+                                        ['class' => 'btn btn-sm btn-danger', 'escapeTitle' => false]
+                                    );
+                                    echo '</td>';
                                 echo '</tr>';
                             }
                         }
