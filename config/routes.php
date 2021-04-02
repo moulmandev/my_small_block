@@ -31,6 +31,9 @@ $routes->setRouteClass(DashedRoute::class);
 $routes->scope('/', function (RouteBuilder $builder) {
 
     $builder->connect('/', ['controller' => 'Shops', 'action' => 'index']);
+    $builder->connect('/mod/{id}', ['controller' => 'Mods', 'action' => 'index'])
+        ->setPatterns(['id' => '\d+'])
+        ->setPass(['id']);
 
     $builder->connect('/pages/*', 'Pages::display');
 

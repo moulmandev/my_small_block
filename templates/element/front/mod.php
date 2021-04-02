@@ -10,6 +10,12 @@
             <p class="card-text"><?= $data["description"] ?></p>
         </div>
 
+        <?=  $this->Html->link(
+            'Voir',
+            ['controller' => 'Mods', 'action' => 'index', $data["id"]],
+            ['class' => 'btn btn-primary']
+        ) ?>
+
         <?php //TODO: Système de notation ?>
         <div class="card-footer">
             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
