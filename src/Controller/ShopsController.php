@@ -20,4 +20,8 @@ class ShopsController extends AppController
 
         $this->set(compact("modsArray"));
     }
+
+    public function cart() {
+
+    }
 }

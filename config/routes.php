@@ -29,8 +29,8 @@ use Cake\Routing\RouteBuilder;
 $routes->setRouteClass(DashedRoute::class);
 
 $routes->scope('/', function (RouteBuilder $builder) {
-
     $builder->connect('/', ['controller' => 'Shops', 'action' => 'index']);
+    $builder->connect('/cart', ['controller' => 'Shops', 'action' => 'cart']);
     $builder->connect('/mod/{id}', ['controller' => 'Mods', 'action' => 'index'])
         ->setPatterns(['id' => '\d+'])
         ->setPass(['id']);

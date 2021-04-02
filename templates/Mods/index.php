@@ -1,12 +1,12 @@
-<!-- Page Content -->
-<div class="container">
-
-    <div class="row">
-
-        <?= $mod ?>
-
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">DETAILS</h1>
     </div>
-    <!-- /.row -->
+</section>
 
+<div class="container">
+    <div class="row">
+        <?= $mod ?>
+    </div>
 </div>
-<!-- /.container -->
+
