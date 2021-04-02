@@ -12,54 +12,29 @@
                     <thead>
                     <tr>
                         <th scope="col"> </th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Available</th>
-                        <th scope="col" class="text-center">Quantity</th>
-                        <th scope="col" class="text-right">Price</th>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Disponible</th>
+                        <th scope="col" class="text-right">Prix</th>
                         <th> </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                        <td>Product Name Dada</td>
-                        <td>In stock</td>
-                        <td><input class="form-control" type="text" value="1" /></td>
-                        <td class="text-right">124,90 €</td>
-                        <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                        <td>Product Name Toto</td>
-                        <td>In stock</td>
-                        <td><input class="form-control" type="text" value="1" /></td>
-                        <td class="text-right">33,90 €</td>
-                        <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                        <td>Product Name Titi</td>
-                        <td>In stock</td>
-                        <td><input class="form-control" type="text" value="1" /></td>
-                        <td class="text-right">70,00 €</td>
-                        <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Sub-Total</td>
-                        <td class="text-right">255,90 €</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Shipping</td>
-                        <td class="text-right">6,90 €</td>
-                    </tr>
+                    <?php
+                        $cart = $this->Session->read("cart");
+                        if ($cart != NULL) {
+                            foreach ($cart as $k => $v) {
+                                echo "<tr>";
+                                    echo '<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>';
+                                    echo '<td>Product Name Dada</td>';
+                                    echo '<td>En stock</td>';
+                                    echo '<td class="text-right">124,90 €</td>';
+                                    echo '<td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>';
+                                echo '</tr>';
+                            }
+                        }
+                    ?>
+
+
                     <tr>
                         <td></td>
                         <td></td>

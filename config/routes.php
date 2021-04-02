@@ -31,6 +31,12 @@ $routes->setRouteClass(DashedRoute::class);
 $routes->scope('/', function (RouteBuilder $builder) {
     $builder->connect('/', ['controller' => 'Shops', 'action' => 'index']);
     $builder->connect('/cart', ['controller' => 'Shops', 'action' => 'cart']);
+    $builder->connect('/cart/add/{id}', ['controller' => 'Shop', 'action' => 'addCart'])
+        ->setPatterns(['id' => '\d+'])
+        ->setPass(['id']);
+    $builder->connect('/cart/remove/{id}', ['controller' => 'Shop', 'action' => 'removeCart'])
+        ->setPatterns(['id' => '\d+'])
+        ->setPass(['id']);
     $builder->connect('/mod/{id}', ['controller' => 'Mods', 'action' => 'index'])
         ->setPatterns(['id' => '\d+'])
         ->setPass(['id']);

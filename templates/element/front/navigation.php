@@ -24,12 +24,15 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <?=  $this->Html->link(
+                    <?php
+                    $cart = $this->Session->read("cart");
+
+                    echo $this->Html->link(
                         '<i class="fa fa-shopping-cart"></i> Panier
-                        <span class="badge badge-light">3</span>',
+                        <span class="badge badge-light">'.($cart != NULL ? count($cart) : 0).'</span>',
                         ['controller' => 'Shops', 'action' => 'cart'],
                         ['class' => 'btn btn-success btn-sm ml-3', 'escapeTitle' => false]
-                    ) ?>
+                    ); ?>
                 </li>
             </ul>
         </div>
