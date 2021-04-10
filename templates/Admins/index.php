@@ -15,7 +15,7 @@
     ?>
 </div>
 
-<div>
+<div class='row'>
     <?php
     /** @var array $modsArray */
     foreach ($modsArray as $k => $v) {

@@ -19,7 +19,6 @@ class AdminsController extends AppController {
             $modsArray = $modsLocator->find()
             ->limit(12)
             ->where([
-                'Mods.show' => 0,
                 'Mods.level' => (int) $level
             ])
             ->page($page)
@@ -28,12 +27,15 @@ class AdminsController extends AppController {
         else {
             $modsArray = $modsLocator->find()
             ->limit(12)
-            ->where(['Mods.show' => 0,])
             ->page($page)
             ->toArray();
         }
 
         $this->set(compact('modsArray', 'page'));
+    }
+
+    public function add(){
+        
     }
 
 }
