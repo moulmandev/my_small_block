@@ -25,6 +25,12 @@
                 </div>
                 <div class="m-bot15"> <strong>Prix : </strong><?= $mod["price"] ?>€</div>
 
+                <?php
+                    if ($mod['show'] == false){
+                        //TODO modification du level
+                    }
+                ?>
+
                 <div class="btn-group">
                 <?php
                     if ($mod['show'] == false){
