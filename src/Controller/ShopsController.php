@@ -30,11 +30,13 @@ class ShopsController extends AppController
                         ->where(['Keywords.key' => $params]);
                 })
                 ->limit(6)
+                ->where(['Mods.show' => 1])
                 ->toArray();
         }
         else {
             $modsArray = $modsLocator->find()
                 ->limit(6)
+                ->where(['Mods.show' => 1])
                 ->toArray();
         }
 

@@ -25,11 +25,30 @@
                 </div>
                 <div class="m-bot15"> <strong>Prix : </strong><?= $mod["price"] ?>€</div>
 
-                <?=  $this->Html->link(
-                    '<i class="fa fa-shopping-cart"></i> Ajouter au panier',
-                    ['controller' => 'Shops', 'action' => 'addCart', $mod["id"]],
-                    ['class' => 'btn btn-round btn-danger', 'escapeTitle' => false]
-                ) ?>
+                <div class="btn-group">
+                <?php
+                    if ($mod['show'] == false){
+                        echo $this->Html->link(
+                            '<i class="fa fa-plus"></i> Ajouter au catalogue',
+                            '#',
+                            ['class' => 'btn btn-round btn-success', 'escapeTitle' => false]
+                        );
+
+                        echo $this->Html->link(
+                            '<i class="fa fa-trash"></i> Supprimer la demande',
+                            '#',
+                            ['class' => 'btn btn-round btn-danger', 'escapeTitle' => false]
+                        );
+                    }
+                    else {
+                        echo $this->Html->link(
+                            '<i class="fa fa-shopping-cart"></i> Ajouter au panier',
+                            ['controller' => 'Shops', 'action' => 'addCart', $mod["id"]],
+                            ['class' => 'btn btn-round btn-danger', 'escapeTitle' => false]
+                        );
+                    }
+                ?>
+                </div>
             </div>
         </div>
     </div>
