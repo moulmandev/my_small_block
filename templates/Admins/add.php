@@ -12,13 +12,15 @@
 
             <?= $this->Form->control('name', [
                 'label' => 'Nom',
-                'class' => 'form-control'
+                'class' => 'form-control',
+                'required' => true
             ])?>
 
             <?= $this->Form->control('description', [
                 'type' => 'text',
                 'label' => 'Description',
-                'class' => 'form-control'
+                'class' => 'form-control',
+                'required' => true
             ])?>
 
             <?= $this->Form->control('picture', [
@@ -27,10 +29,17 @@
                 'class' => 'form-control'
             ])?>
 
+            <?= $this->Form->control('tags', [
+                'type' => 'text',
+                'label' => 'Tag(s) (Séparé(s) par une virgule sans espaces)',
+                'class' => 'form-control'
+            ])?>
+
             <?= $this->Form->control('price', [
                 'type' => 'decimal',
                 'label' => 'Prix',
-                'class' => 'form-control'
+                'class' => 'form-control',
+                'required' => true
             ])?>
 
             <?= $this->Form->button('Valider', [

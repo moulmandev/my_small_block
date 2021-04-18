@@ -8,7 +8,11 @@ class ModsTable extends Table
     public function initialize(array $config): void
     {
         parent::initialize($config);
-        $this->hasMany('Keywords');
+        $this->hasMany('Keywords', [
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
+
         $this->addBehavior('Timestamp');
     }
 }

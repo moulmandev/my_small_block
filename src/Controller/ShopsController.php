@@ -11,14 +11,16 @@ class ShopsController extends AppController
     public function initialize(): void
     {
         parent::initialize();
+
+        $this->Authentication->addUnauthenticatedActions(['index', 'cart', 'addCart', 'removeCart']);
     }
 
     public function index() {
         $modsLocator = $this->getTableLocator()->get('Mods');
         $keywordsLocator = $this->getTableLocator()->get('Keywords');
         $keywords = $keywordsLocator->find()
-            ->select(['key'])
-            ->group('keywords.`key`')
+            ->select(['keyword'])
+            ->group('keywords.`keyword`')
             ->toArray();
 
         $params = $this->request->getParam('keyword') ?? array();
@@ -27,16 +29,16 @@ class ShopsController extends AppController
             $modsArray = $modsLocator->find()
                 ->innerJoinWith('Keywords', function (Query $q) use ($params){
                     return $q
-                        ->where(['Keywords.key' => $params]);
+                        ->where(['Keywords.keyword' => $params]);
                 })
                 ->limit(6)
-                ->where(['Mods.show' => 1])
+                ->where(['Mods.isShown' => 1])
                 ->toArray();
         }
         else {
             $modsArray = $modsLocator->find()
                 ->limit(6)
-                ->where(['Mods.show' => 1])
+                ->where(['Mods.isShown' => 1])
                 ->toArray();
         }
 

@@ -20,7 +20,7 @@ class FirstMigration extends AbstractMigration
                 'limit' => null,
                 'null' => true,
             ])
-            ->addColumn('key', 'text', [
+            ->addColumn('keyword', 'text', [
                 'default' => null,
                 'limit' => null,
                 'null' => true,

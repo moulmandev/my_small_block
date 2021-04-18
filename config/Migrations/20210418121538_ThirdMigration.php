@@ -8,7 +8,7 @@ class ThirdMigration extends AbstractMigration
     public function up()
     {
         $this->table('mods')
-            ->addColumn('show', 'integer', [
+            ->addColumn('isShown', 'integer', [
                 'default' => 0,
                 'limit' => null,
                 'null' => true,
@@ -20,7 +20,7 @@ class ThirdMigration extends AbstractMigration
     {
 
         $this->table('mods')
-            ->removeColumn('show')
+            ->removeColumn('isShown')
             ->update();
     }
 }

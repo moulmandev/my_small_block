@@ -54,6 +54,22 @@ $routes->scope('/', function (RouteBuilder $builder) {
         ->setPatterns(['page' => '\d+'])
         ->setPass(['page']);
 
+    $builder->connect('/admin/addCatalogue/{id}', ['controller' => 'Admins', 'action' => 'addToCatalogue'])
+        ->setPatterns(['id' => '\d+'])
+        ->setPass(['id']);
+
+    $builder->connect('/admin/removeCatalogue/{id}', ['controller' => 'Admins', 'action' => 'removeFromCatalogue'])
+        ->setPatterns(['id' => '\d+'])
+        ->setPass(['id']);
+
+    $builder->connect('/admin/removeDb/{id}', ['controller' => 'Admins', 'action' => 'removeFromDb'])
+        ->setPatterns(['id' => '\d+'])
+        ->setPass(['id']);
+
+    $builder->connect('/admin/setStars/{id}', ['controller' => 'Admins', 'action' => 'setStars'])
+        ->setPatterns(['id' => '\d+'])
+        ->setPass(['id']);
+
     $builder->connect('/add', ['controller' => 'Admins', 'action' => 'add']);
 
     $builder->connect('/api/get/mods', ['controller' => 'Mods', 'action' => 'api']);

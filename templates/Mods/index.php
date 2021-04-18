@@ -20,41 +20,66 @@
                     <?= $mod["description"] ?>
                 </p>
                 <div class="product_meta">
-                    <span class="posted_in"> <strong>Catégories:</strong> <a rel="tag" href="#">Jackets</a>, <a rel="tag" href="#">Men</a>, <a rel="tag" href="#">Shirts</a>, <a rel="tag" href="#">T-shirt</a>.</span>
-                    <span class="tagged_as"><strong>Tags:</strong> <a rel="tag" href="#">mens</a>, <a rel="tag" href="#">womens</a>.</span>
+                    <span class="tagged_as"><strong>Tags:</strong>
+                    <?php
+                        foreach ($mod["keywords"] as $k => $v) {
+                            echo $mod["keywords"][$k]["keyword"].", ";
+                        }
+                    ?>
+                    </span>
                 </div>
                 <div class="m-bot15"> <strong>Prix : </strong><?= $mod["price"] ?>€</div>
 
-                <?php
-                    if ($mod['show'] == false){
-                        //TODO modification du level
-                    }
-                ?>
-
                 <div class="btn-group">
                 <?php
-                    if ($mod['show'] == false){
-                        echo $this->Html->link(
-                            '<i class="fa fa-plus"></i> Ajouter au catalogue',
-                            '#',
-                            ['class' => 'btn btn-round btn-success', 'escapeTitle' => false]
-                        );
-
-                        echo $this->Html->link(
-                            '<i class="fa fa-trash"></i> Supprimer la demande',
-                            '#',
-                            ['class' => 'btn btn-round btn-danger', 'escapeTitle' => false]
-                        );
-                    }
-                    else {
+                    if (empty($this->Session->read("Auth.id"))) {
                         echo $this->Html->link(
                             '<i class="fa fa-shopping-cart"></i> Ajouter au panier',
                             ['controller' => 'Shops', 'action' => 'addCart', $mod["id"]],
                             ['class' => 'btn btn-round btn-danger', 'escapeTitle' => false]
                         );
+                    } else {
+                        if ($mod['isShown'] == false) {
+                            echo $this->Html->link(
+                                '<i class="fa fa-plus"></i> Ajouter au catalogue',
+                                ['controller' => 'Admins', 'action' => 'addToCatalogue', $mod["id"]],
+                                ['class' => 'btn btn-round btn-success', 'escapeTitle' => false]
+                            );
+
+                            echo $this->Html->link(
+                                '<i class="fa fa-trash"></i> Supprimer la demande',
+                                ['controller' => 'Admins', 'action' => 'removeFromDb', $mod["id"]],
+                                ['class' => 'btn btn-round btn-danger', 'escapeTitle' => false]
+                            );
+
+                        } else {
+                            echo $this->Html->link(
+                                '<i class="fa fa-trash"></i> Retirer du catalogue',
+                                ['controller' => 'Admins', 'action' => 'removeFromCatalogue', $mod["id"]],
+                                ['class' => 'btn btn-round btn-danger', 'escapeTitle' => false]
+                            );
+                        }
                     }
                 ?>
                 </div>
+
+
+                <?php
+                    if (!empty($this->Session->read("Auth.id"))) {
+                        echo '<div class="btn-group">';
+
+                        for ($i = 1; $i < 6; $i++) {
+                            echo $this->Html->link(
+                                    '&#9733',
+                                    ['controller' => 'Admins', 'action' => 'setStars', $mod["id"], '?' => ['stars' => $i]],
+                                    ['class' => 'btn btn-primary', 'style' => 'font-size:15px', 'escapeTitle' => false]
+                                );
+                        }
+                         echo '</div>';
+                    }
+                ?>
+
+
             </div>
         </div>
     </div>

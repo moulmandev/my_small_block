@@ -24,7 +24,7 @@
                         if ($cartArray != NULL) {
                             foreach ($cartArray as $k => $v) {
                                 echo "<tr>";
-                                    echo '<td><img src="'.$v["picture"].'" /> </td>';
+                                    echo '<td>'. $this->Html->image($v["picture"], ["style" => "width:50%"]) .'</td>';
                                     echo '<td>'.$v["name"].'</td>';
                                     echo '<td>En stock</td>';
                                     echo '<td class="text-right">'.$v["price"].'€</td>';
