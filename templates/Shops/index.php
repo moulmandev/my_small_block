@@ -9,7 +9,7 @@
                 foreach($keywords as $keyword){
                     echo $this->Html->link($keyword['key'],
                         ['controller' =>'Shops', 'action' => 'index', $keyword['key']],
-                        [ 'class'=>'list-group-item',]
+                        [ 'class'=>'list-group-item']
                     );
                 }
                 ?>

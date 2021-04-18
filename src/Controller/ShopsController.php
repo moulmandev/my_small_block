@@ -47,6 +47,7 @@ class ShopsController extends AppController
         $session = new Session();
         $cart = $session->read("cart");
         $cartArray = array();
+        $totalPrice = 0;
 
         if ($cart != null) {
             $modsLocator = $this->getTableLocator()->get('Mods');
@@ -58,7 +59,13 @@ class ShopsController extends AppController
                 ->limit(6)
                 ->toArray();
         }
-        $this->set(compact("cartArray"));
+
+        foreach ($cartArray as $k => $v) {
+            $totalPrice += $v["price"];
+        }
+
+
+        $this->set(compact("cartArray", "totalPrice"));
     }
 
     public function addCart() {
@@ -68,9 +75,17 @@ class ShopsController extends AppController
         $cart = $session->read("cart");
         if ($cart == null)
             $cart = array();
-        array_push($cart, $id);
-        $session->write('cart', $cart);
-        $this->Flash->success('Added to cart !');
+
+
+        if (!in_array($id, $cart)) {
+            array_push($cart, $id);
+            $session->write('cart', $cart);
+            $this->Flash->success('Added to cart !');
+        } else {
+            $this->Flash->error('Already in cart !');
+        }
+
+
 
         return $this->redirect($this->referer());
     }
@@ -78,7 +93,6 @@ class ShopsController extends AppController
     public function removeCart() {
         $id = $this->request->getParam('id')[0] ?? "0";
 
-        //TODO: ça fonctionne pas il faut recup l'array et pop l'id correspondant
         $session = new Session();
         $cart = $session->read("cart");
         if ($cart != null) {
@@ -89,7 +103,6 @@ class ShopsController extends AppController
             }
             $session->write('cart', $cart);
         }
-
         $this->Flash->success('Removed from cart !');
 
         return $this->redirect($this->referer());

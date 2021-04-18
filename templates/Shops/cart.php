@@ -27,7 +27,7 @@
                                     echo '<td><img src="'.$v["picture"].'" /> </td>';
                                     echo '<td>'.$v["name"].'</td>';
                                     echo '<td>En stock</td>';
-                                    echo '<td class="text-right">'.$v["price"].'</td>';
+                                    echo '<td class="text-right">'.$v["price"].'€</td>';
                                     echo '<td class="text-right">';
                                     echo $this->Html->link(
                                         '<i class="fa fa-trash"></i>',
@@ -40,14 +40,12 @@
                         }
                     ?>
 
-
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
                         <td><strong>Total</strong></td>
-                        <td class="text-right"><strong>346,90 €</strong></td>
+                        <td class="text-right"><strong><?= $totalPrice ?>€</strong></td>
                     </tr>
                     </tbody>
                 </table>
@@ -56,7 +54,12 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <button class="btn btn-block btn-light">Continue Shopping</button>
+                    <?php
+                        echo $this->Html->link("Continue Shopping",
+                            ['controller' =>'Shops', 'action' => 'index'],
+                            ['class'=>'btn btn-block btn-light']
+                        );
+                    ?>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
                     <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
