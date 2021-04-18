@@ -11,6 +11,12 @@
     'class' => 'form-control'
 ])?>
 
+<?= $this->Form->control('picture', [
+    'type' => 'text',
+    'label' => 'Url de l\'image',
+    'class' => 'form-control'
+])?>
+
 <?= $this->Form->control('price', [
     'type' => 'decimal',
     'label' => 'Prix',

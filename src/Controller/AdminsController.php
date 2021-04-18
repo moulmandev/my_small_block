@@ -43,12 +43,11 @@ class AdminsController extends AppController {
             $modsLocator->patchEntity($modEntity, array_merge($this->request->getData(), [
                 'level' => 5,
                 'show' => false,
-                'picture' => null
             ]));
             
             $modsLocator->save($modEntity);
 
-            
+
         }
 
         $this->set(compact('modEntity'));
