@@ -47,7 +47,7 @@ class AdminsController extends AppController {
             
             $modsLocator->save($modEntity);
 
-
+            return $this->redirect(['controller' => 'Shops', 'action' => 'index']);
         }
 
         $this->set(compact('modEntity'));
