@@ -22,4 +22,15 @@ class ModsController extends AppController
         $mod = $mod[0];
         $this->set(compact("mod"));
     }
+
+    public function api()
+    {
+        $mods = $this->Mods->find()
+            ->contain('Keywords')
+            ->toArray();
+        
+        return $this->response
+            ->withStringBody(json_encode($mods))
+            ->withType('application/json');
+    }
 }

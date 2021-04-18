@@ -54,6 +54,10 @@ $routes->scope('/', function (RouteBuilder $builder) {
         ->setPatterns(['page' => '\d+'])
         ->setPass(['page']);
 
+    $builder->connect('/add', ['controller' => 'Admins', 'action' => 'add']);
+
+    $builder->connect('/api/get/mods', ['controller' => 'Mods', 'action' => 'api']);
+
     $builder->connect('/pages/*', 'Pages::display');
 
     $builder->fallbacks();

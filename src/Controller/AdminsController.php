@@ -35,7 +35,23 @@ class AdminsController extends AppController {
     }
 
     public function add(){
-        
+        $modsLocator = $this->getTableLocator()->get('Mods');
+        $modEntity = $modsLocator->newEmptyEntity();
+
+        if (!empty($this->request->getData())){
+            
+            $modsLocator->patchEntity($modEntity, array_merge($this->request->getData(), [
+                'level' => 5,
+                'show' => false,
+                'picture' => null
+            ]));
+            
+            $modsLocator->save($modEntity);
+
+            
+        }
+
+        $this->set(compact('modEntity'));
     }
 
 }
