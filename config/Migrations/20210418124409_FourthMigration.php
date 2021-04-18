@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class ThirdMigration extends AbstractMigration
+class FourthMigration extends AbstractMigration
 {
     public function up()
     {
         $this->table('mods')
-            ->addColumn('show', 'integer', [
-                'default' => 0,
+            ->addColumn('level', 'integer', [
+                'default' => 1,
                 'limit' => null,
                 'null' => true,
             ])
@@ -20,7 +20,7 @@ class ThirdMigration extends AbstractMigration
     {
 
         $this->table('mods')
-            ->removeColumn('show')
+            ->removeColumn('level')
             ->update();
     }
 }

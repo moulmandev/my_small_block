@@ -1,6 +1,6 @@
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">AJOUTER UN MOD</h1>
+        <h1 class="jumbotron-heading">DEMANDE DE NOUVEAU MOD</h1>
     </div>
 </section>
 
